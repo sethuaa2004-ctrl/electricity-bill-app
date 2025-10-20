@@ -7,7 +7,7 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import load_model
 import os
 
-import google.generativeai as genai
+#import google.generativeai as genai
 
 st.set_page_config(
     page_title="SmartBill AI - Electricity Predictor",
@@ -364,7 +364,7 @@ with tab2:
         
         try:
             if api_choice == "Google Gemini" and gemini_key:
-                genai.configure(api_key=gemini_key)
+                #genai.configure(api_key=gemini_key)
                 model_gem = genai.GenerativeModel('gemini-pro')
                 
                 system_prompt = "You are SmartBill AI Assistant, an expert in electricity bills and energy efficiency. Help users understand consumption, reduce bills, and track carbon emissions."
