@@ -1,7 +1,5 @@
-streamlit==1.28.1
+streamlit
 pandas
 numpy
 matplotlib
 scikit-learn
-tensorflow
-google-generativeai
