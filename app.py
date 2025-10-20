@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model
 import os
 
 #import google.generativeai as genai
@@ -21,7 +21,7 @@ st.markdown("Predict your electricity consumption, bills, and carbon emissions u
 @st.cache_resource
 def load_model_and_scaler():
     try:
-        model = load_model('lstm_model.h5')
+        #model = load_model('lstm_model.h5')
         with open('scaler.pkl', 'rb') as f:
             scaler = pickle.load(f)
         return model, scaler
