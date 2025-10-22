@@ -21,8 +21,12 @@ st.markdown("Predict your electricity consumption, bills, and carbon emissions u
 @st.cache_resource
 def load_model_and_scaler():
     try:
-        model = keras.models.load_model('lstm_model_updated.h5', compile=False)
-model.compile(optimizer='adam', loss='mse')
+        try:
+    model = keras.models.load_model('lstm_model_updated.h5', compile=False)
+    model.compile(optimizer='adam', loss='mse')
+except Exception as e:
+    st.error(f"Model loading failed: {e}")
+    model = None
         with open('scaler.pkl', 'rb') as f:
             scaler = pickle.load(f)
         return model, scaler
