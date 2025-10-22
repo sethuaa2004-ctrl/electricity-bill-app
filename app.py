@@ -22,7 +22,7 @@ def load_model_and_scaler():
     try:
         model = load_model('lstm_model_updated.h5', compile=False)
         model.compile(optimizer='adam', loss='mse')
-        with open('scaler.pkl', 'rb') as f:
+        with open('scaler_updated.pkl', 'rb') as f:
             scaler = pickle.load(f)
         return model, scaler
     except FileNotFoundError:
@@ -101,9 +101,8 @@ with tab1:
                     st.rerun()
         
         predictions_df = None
-        if os.path.exists('predictions.csv'):
-            predictions_df = pd.read_csv('predictions.csv')
-            st.info(f"✓ Loaded {len(predictions_df)} months of future predictions")
+       if os.path.exists('predictions_updated.csv'):
+    predictions_df = pd.read_csv('predictions_updated.csv') st.info(f"✓ Loaded {len(predictions_df)} months of future predictions")
 
         col_a, col_b = st.columns(2)
         
