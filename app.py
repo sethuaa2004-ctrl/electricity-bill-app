@@ -17,20 +17,19 @@ st.set_page_config(
 
 st.title("⚡ SmartBill AI - Electricity Bill Predictor")
 st.markdown("Predict your electricity consumption, bills, and carbon emissions using AI")
-
 @st.cache_resource
 def load_model_and_scaler():
     try:
-        try:
-    model = keras.models.load_model('lstm_model_updated.h5', compile=False)
-    model.compile(optimizer='adam', loss='mse')
-except Exception as e:
-    st.error(f"Model loading failed: {e}")
-    model = None
+        model = load_model('lstm_model_updated.h5', compile=False)
+        model.compile(optimizer='adam', loss='mse')
         with open('scaler.pkl', 'rb') as f:
             scaler = pickle.load(f)
         return model, scaler
     except FileNotFoundError:
+        return None, None
+    except Exception as e:
+        st.error(f"Model loading failed: {e}")
+        return None, None
         return None, None
 
 model, scaler = load_model_and_scaler()
